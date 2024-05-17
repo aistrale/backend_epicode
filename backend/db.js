@@ -5,9 +5,9 @@ const initDatabaseConnection = () => {
         mongoose.connect(process.env.DB_URL)
         const db = mongoose.connection
 
-        db.on("error", console.error.bind(console, "db connection error"))
+        db.on("error", console.error.bind(console, "Database connection error"))
         db.once("open", () => {
-            console.log("connected to db")
+            console.log("Connected to database")
         })
     } catch (error) {
         console.log(error.message)
