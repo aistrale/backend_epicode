@@ -1,15 +1,18 @@
-const express = require('express');
 require("dotenv").config();
+const express = require("express");
+const cors = require("cors")
+
 const app = express();
 const PORT = 3001;
-const { initDatabaseConnection } = require('./db')
-
+const { initDatabaseConnection } = require("./database")
 initDatabaseConnection()
 
 // routes
 const authorsRoutes = require("./routes/authors")
 const postsRoutes = require("./routes/blogPosts")
 
+// cors
+app.use(cors());
 
 // mw
 app.use(express.json())

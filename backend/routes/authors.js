@@ -1,7 +1,6 @@
 const express = require("express")
-const AuthorsModel = require("../models/authors/modelAuthors")
+const AuthorsModel = require("../models/modelAuthors")
 const authors = express.Router()
-
 
 authors.get("/authors", async (req, res) => {
     try {
@@ -12,7 +11,6 @@ authors.get("/authors", async (req, res) => {
     }
 })
 
-// GET by ID
 authors.get("/author/:authorId", async (req, res) => {
     const { authorId } = req.params
 
@@ -46,7 +44,6 @@ authors.post("/authors", async (req, res) => {
     }
 })
 
-
 authors.patch("/author/:authorId", async (req, res) => {
     const { authorId } = req.params
 
@@ -71,6 +68,7 @@ authors.delete("/author/:authorId", async (req, res) => {
 
     try {
         const author = await AuthorsModel.findByIdAndDelete(authorId)
+        
         if(!author) {
             return res.status(404).send({
                 message: "author not found"
