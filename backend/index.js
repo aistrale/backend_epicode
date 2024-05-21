@@ -11,13 +11,18 @@ initDatabaseConnection()
 const authorsRoutes = require("./routes/authors")
 const postsRoutes = require("./routes/blogPosts")
 
-// cors
-app.use(cors());
+const logger = require("./middlewares/logger")
+// const login = require("./middlewares/validateUser")
 
 // mw
 app.use(express.json())
+app.use(cors()); // cors
 app.use("/", authorsRoutes)
 app.use("/", postsRoutes)
+
+// mw custom
+app.use(logger)
+// app.use("/", login)
 
 
 app.listen(PORT, () => console.log(`Server up and running on port ${PORT}`))

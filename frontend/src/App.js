@@ -1,22 +1,33 @@
-import React from "react";
-import NavBar from "./components/navbar/BlogNavbar";
-import Footer from "./components/footer/Footer";
-import Home from "./views/home/Home";
-import Blog from "./views/blog/Blog";
-import NewBlogPost from "./views/new/New";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import './App.css';
+import {useEffect, useState} from "react"
 
 function App() {
+
+
+  const [authors, setAuthors] =useState([])
+
+  const authorsData = async () => {
+
+    try {
+      const response = await fetch(`${process.env.REACT_APP_BASEURL}/authors`)
+      const data = await response.json
+      setAuthors(data)
+
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  
+  useEffect(() => {
+    authorsData()
+  }, [])
+
   return (
-    <Router>
-      <NavBar />
-      <Routes>
-        <Route path="/" exact element={<Home />} />
-        <Route path="/blog/:id" element={<Blog />} />
-        <Route path="/new" element={<NewBlogPost />} />
-      </Routes>
-      <Footer />
-    </Router>
+    <div>
+      {authors.map(author => (
+        <p>${author.name}</p>
+      ))}
+    </div>
   );
 }
 
