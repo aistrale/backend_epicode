@@ -32,7 +32,7 @@ authors.get("/author/:authorId", async (req, res) => {
     }
 })
 
-authors.post("/authors", async (req, res) => {
+authors.post("/authors", validateBody, async (req, res) => {
     const newUser = new AuthorsModel({
         name: req.body.name,
         lastName: req.body.lastName,

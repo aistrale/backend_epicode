@@ -1,16 +1,14 @@
 import './App.css';
-import {useEffect, useState} from "react"
+import { useEffect, useState } from "react"
 
 function App() {
-
 
   const [authors, setAuthors] =useState([])
 
   const authorsData = async () => {
-
     try {
       const response = await fetch(`${process.env.REACT_APP_BASEURL}/authors`)
-      const data = await response.json
+      const data = await response.json()
       setAuthors(data)
 
     } catch (error) {
@@ -25,7 +23,7 @@ function App() {
   return (
     <div>
       {authors.map(author => (
-        <p>${author.name}</p>
+        <p>{author.name}</p>
       ))}
     </div>
   );
