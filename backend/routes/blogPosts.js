@@ -4,7 +4,7 @@ const posts = express.Router()
 
 posts.get("/posts", async (req, res) => {
     // pagination
-    const { page=1, pageSize=3 } = req.query
+    const { page=1, pageSize=10 } = req.query
     const totalPosts = await BlogPostModel.countDocuments()
     const totalPages = Math.ceil(totalPosts / pageSize)
 

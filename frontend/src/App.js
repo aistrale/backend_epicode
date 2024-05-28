@@ -1,9 +1,10 @@
-import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { useEffect, useState } from "react"
+import NewArticle from "./components/newArticle/NewArticle"
 
 function App() {
 
-  const [authors, setAuthors] =useState([])
+/*   const [authors, setAuthors] =useState([])
 
   const authorsData = async () => {
     try {
@@ -18,14 +19,10 @@ function App() {
   
   useEffect(() => {
     authorsData()
-  }, [])
+  }, []) */
 
   return (
-    <div>
-      {authors.map(author => (
-        <p>{author.name}</p>
-      ))}
-    </div>
+    <NewArticle />
   );
 }
 
