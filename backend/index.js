@@ -2,6 +2,9 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors")
 
+// cloudinary
+// const cloudinary = require('cloudinary').v2;
+
 const app = express();
 const PORT = 3001;
 const { initDatabaseConnection } = require("./database")
