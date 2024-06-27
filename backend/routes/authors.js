@@ -4,8 +4,7 @@ const authors = express.Router()
 
 // mw validateUser
 // const validateUser = require("../middlewares/validateUser")
-
-const validateBody = require("../middlewares/validateUser1")
+// const validateBody = require("../middlewares/validateUser1")
 
 authors.get("/authors", async (req, res) => {
     try {
